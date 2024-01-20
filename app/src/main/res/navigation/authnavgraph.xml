@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/authnavgraph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/authnavgraph"
+    app:startDestination="@id/introFragment">
 
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="com.vijaydhoni.quickchat.ui.view.fragments.IntroFragment"
+        android:label="fragment_intro"
+        tools:layout="@layout/fragment_intro" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.vijaydhoni.quickchat.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/OTPFragment"
+        android:name="com.vijaydhoni.quickchat.OTPFragment"
+        android:label="fragment_o_t_p"
+        tools:layout="@layout/fragment_o_t_p" />
 </navigation>
