@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_line_hori"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.70" />
+
+    <ImageView
+        android:id="@+id/intro_img"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/guide_line_hori"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/quickchatscreen1" />
+
+    <TextView
+        android:id="@+id/intro_headline_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/poppins_bold"
+        android:maxLines="1"
+        android:textAlignment="center"
+        android:textColor="@color/g_black"
+        android:textSize="29sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/guide_line_hori"
+        tools:text="Welcome to our chat app!" />
+
+    <TextView
+        android:id="@+id/intro_sub_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/andika"
+        android:maxLines="2"
+        android:textAlignment="center"
+        android:textColor="@color/g_light_black"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/intro_headline_txt"
+        tools:text="descover joy of all chats in our chat app with highest quality of chat speed very good " />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

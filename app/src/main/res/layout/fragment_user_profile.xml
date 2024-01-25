@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/g_blue"
-    tools:context=".ui.view.fragments.authFragments.LoginFragment">
+    tools:context=".ui.view.fragments.authFragments.UserProfileFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/start_guide"
@@ -26,45 +26,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
+        app:layout_constraintGuide_percent="0.60" />
 
     <ImageView
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:contentDescription="@string/app_logo"
-        android:src="@drawable/chatappicon1"
+        android:src="@drawable/chatprofile"
         app:layout_constraintBottom_toTopOf="@id/signup_discription"
         app:layout_constraintEnd_toStartOf="@id/end_guide"
         app:layout_constraintStart_toEndOf="@id/start_guide"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:autofillHints="phone"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/login"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/g_white"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/signup_discription"
-        app:layout_constraintEnd_toStartOf="@id/end_guide"
-        app:layout_constraintStart_toEndOf="@id/start_guide" />
 
     <TextView
         android:id="@+id/signup_discription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:fontFamily="@font/andika"
-        android:text="@string/login_discription"
-        android:textAlignment="center"
+        android:layout_marginBottom="6dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:maxLines="1"
+        android:text="Enter your user name here!"
         android:textAllCaps="false"
         android:textColor="@color/g_white"
-        android:textSize="14sp"
+        android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@id/mid_guide"
         app:layout_constraintEnd_toStartOf="@id/end_guide"
         app:layout_constraintStart_toEndOf="@id/start_guide" />
@@ -80,49 +65,41 @@
         app:layout_constraintStart_toEndOf="@id/start_guide"
         app:layout_constraintTop_toBottomOf="@id/mid_guide">
 
-        <com.hbb20.CountryCodePicker
-            android:id="@+id/country_pick"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:ccp_arrowColor="@color/white"
-            app:ccp_arrowSize="24dp"
-            app:ccp_contentColor="@color/g_white"
-            app:ccp_showFlag="false"
-            app:ccp_showFullName="false"
-            app:ccp_showNameCode="false"
-            app:ccp_showPhoneCode="true"
-            app:ccp_textGravity="RIGHT"
-            app:ccp_textSize="24sp" />
 
         <EditText
-            android:id="@+id/phn_num"
-            android:layout_width="0dp"
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="2"
             android:background="@color/g_grey_blue"
-            android:inputType="phone"
+            android:inputType="text"
+            android:paddingStart="2dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="2dp"
+            android:paddingBottom="8dp"
+            android:textAlignment="center"
             android:textColor="@color/g_white"
+            android:textColorHint="@color/g_white"
             android:textSize="24sp" />
 
 
     </LinearLayout>
 
     <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
-        android:id="@+id/login_bttn"
+        android:id="@+id/let_me_in_bttn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/btn_background"
         android:backgroundTint="@color/g_white"
-        android:text="@string/login"
+        android:text="@string/let_me_in"
         android:textAllCaps="false"
-        app:spinning_bar_color="@color/g_blue"
         android:textColor="@color/g_blue"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/end_guide"
         app:layout_constraintStart_toEndOf="@id/start_guide"
-        app:layout_constraintTop_toBottomOf="@id/cntry_liner_lay" />
+        app:layout_constraintTop_toBottomOf="@id/cntry_liner_lay"
+        app:spinning_bar_color="@color/g_blue" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

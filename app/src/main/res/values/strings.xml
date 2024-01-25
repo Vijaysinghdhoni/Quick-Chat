@@ -2,4 +2,12 @@
     <string name="app_name">QuickChat</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_discription">To fully use our application, you need to login! Join us, Login now and let the journey begin!</string>
+    <string name="login">Login</string>
+    <string name="app_logo">app logo</string>
+    <string name="signin_cnfrm_discription">You will be sent an SMS/Viber message to your phone number with a code to confirm authorization.</string>
+    <string name="able_to_resend">You will be able to resend the code after 60 seconds.</string>
+    <string name="confirm">Confirm</string>
+    <string name="sign_in_confirm">Sign in confirmation</string>
+    <string name="let_me_in">let me in!</string>
 </resources>

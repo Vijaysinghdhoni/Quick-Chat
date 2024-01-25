@@ -13,5 +13,8 @@
     <color name="g_dark_blue">#235299</color>
     <color name="g_white">#f2f5f6</color>
     <color name="g_black">#0f0f0f</color>
+    <color name="g_grey_blue">#374f75</color>
+    <color name="g_light_black">#343333</color>
+    <color name="g_lightgrey">#F3E6E3E3</color>
     <color name="g_main_white">#FFFFFFFF</color>
 </resources>
