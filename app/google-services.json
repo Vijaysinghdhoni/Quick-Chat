@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "665100440460",
+    "project_id": "quick-chat-backend-b591c",
+    "storage_bucket": "quick-chat-backend-b591c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665100440460:android:00e602190b2a87e67d7ca9",
+        "android_client_info": {
+          "package_name": "com.vijaydhoni.quickchat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjAdYNYTX0z0jeZxUPUnsJp6MecAKYY0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
