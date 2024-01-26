@@ -8,5 +8,9 @@ class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
+
+      //make chat app flow and implement the chat functionality
+      //
+
     }
 }
