@@ -1,4 +1,4 @@
-package com.vijaydhoni.quickchat.data.firebase
+package com.vijaydhoni.quickchat.data.firebase.authentication
 
 import android.app.Activity
 import com.vijaydhoni.quickchat.data.models.User
@@ -18,8 +18,14 @@ interface BaseAuthenticator {
 
     fun getCurrentUserId(): Resource<String?>
 
-  suspend  fun getCurrentUserDetail(): Resource<User?>
+    suspend fun getCurrentUserDetail(): Resource<User?>
 
-   suspend fun setUserDetails(user: User): Resource<String>
+    suspend fun setUserDetails(user: User): Resource<String>
+
+    fun logoutUser()
+
+    suspend fun saveUserProfileImg(imageByteArray: ByteArray): Resource<String>
+
+    suspend fun userActiveOrLastSeen(isActive: Boolean): Resource<String>
 
 }

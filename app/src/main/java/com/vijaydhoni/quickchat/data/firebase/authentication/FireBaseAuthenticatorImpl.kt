@@ -1,22 +1,28 @@
-package com.vijaydhoni.quickchat.data.firebase
+package com.vijaydhoni.quickchat.data.firebase.authentication
 
 import android.app.Activity
 import com.google.firebase.FirebaseException
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.storage.StorageException
+import com.google.firebase.storage.StorageReference
 import com.vijaydhoni.quickchat.data.models.User
+import com.vijaydhoni.quickchat.util.Constants.Companion.USERCOLLECTION
 import com.vijaydhoni.quickchat.util.Resource
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
+import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class FireBaseAuthenticatorImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
-    private val firebaseFirestore: FirebaseFirestore
+    private val firebaseFirestore: FirebaseFirestore,
+    private val storage: StorageReference
 ) :
     BaseAuthenticator {
 
@@ -130,7 +136,8 @@ class FireBaseAuthenticatorImpl @Inject constructor(
 
     override suspend fun setUserDetails(user: User): Resource<String> {
         return try {
-            firebaseFirestore.collection("User").document(firebaseAuth.uid!!).set(user).await()
+            firebaseFirestore.collection(USERCOLLECTION).document(firebaseAuth.uid!!).set(user)
+                .await()
             Resource.Success("Details updated")
 
         } catch (ex: Exception) {
@@ -140,5 +147,50 @@ class FireBaseAuthenticatorImpl @Inject constructor(
         }
     }
 
+    override fun logoutUser() {
+        firebaseAuth.signOut()
+    }
+
+    override suspend fun saveUserProfileImg(imageByteArray: ByteArray): Resource<String> {
+        return try {
+            val imageDirectory =
+                storage.child("profileImages/${firebaseAuth.uid}")
+            val previousImages = imageDirectory.listAll().await()
+
+            for (item in previousImages.items) {
+                item.delete().await()
+            }
+
+            val newImageReference = imageDirectory.child(UUID.randomUUID().toString())
+            val result = newImageReference.putBytes(imageByteArray).await()
+            val imageUrl = result.storage.downloadUrl.await().toString()
+            Resource.Success(imageUrl)
+        } catch (ex: Exception) {
+            Resource.Error(ex.message ?: "Unknown Error")
+        } catch (ex: StorageException) {
+            Resource.Error(ex.message ?: "Unknown Error")
+        }
+    }
+
+    override suspend fun userActiveOrLastSeen(isActive: Boolean): Resource<String> {
+        return try {
+            val userId = firebaseAuth.currentUser?.uid
+            if (userId != null) {
+                val userRef = firebaseFirestore.collection(USERCOLLECTION).document(userId)
+                val currentTime = Timestamp.now()
+                userRef.update(
+                    "isUserActive", isActive,
+                    "lastSeenTime", currentTime
+                ).await()
+                Resource.Success("Online")
+            } else {
+                Resource.Success("No User Found")
+            }
+        } catch (ex: Exception) {
+            Resource.Error(ex.message ?: "Unknown Error")
+        } catch (ex: FirebaseFirestoreException) {
+            Resource.Error(ex.message ?: "Unknown Error")
+        }
+    }
 
 }

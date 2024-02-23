@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?selectableItemBackground"
+    android:padding="4dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/usr_profile_pic"
+        android:layout_width="83dp"
+        android:layout_height="83dp"
+        android:layout_margin="3dp"
+        android:src="@color/g_black"
+        app:civ_circle_background_color="@color/off_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/recent_chat_linear_lay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@id/time_lay"
+        app:layout_constraintStart_toEndOf="@id/usr_profile_pic"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/usr_name_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins"
+            android:maxLength="50"
+            android:maxLines="1"
+            android:textColor="@color/g_black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+
+            tools:text="User Name" />
+
+
+        <TextView
+            android:id="@+id/last_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/poppins"
+            android:maxLines="1"
+            android:textSize="12sp"
+            tools:text="here last mssg will be seen ho ho ho ho ho ho ho ho " />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/time_lay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/last_msg_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="16sp"
+            tools:text="10:15" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/msg_not_seen_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/msg_seen_ciricle_back"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/poppins"
+                android:src="@color/g_blue"
+                app:civ_circle_background_color="@color/g_blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

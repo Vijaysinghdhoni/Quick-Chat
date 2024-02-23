@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <RelativeLayout
+        android:id="@+id/relative_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:id="@+id/reciver_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="100dp"
+            android:background="@drawable/btn_background"
+            android:backgroundTint="@color/g_light_chat_item_blue"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/reciver_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/g_black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sender_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="1dp"
+            android:layout_toStartOf="@id/seen_lay"
+            android:background="@drawable/btn_background"
+            android:backgroundTint="@color/g_blue"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/sender_mssg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/g_white"
+                android:textSize="18sp"
+                tools:text="message will be here" />
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/seen_lay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/msg_seen_ciricle_back"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/poppins"
+                android:src="@color/off_white"
+                android:textSize="12sp"
+                app:civ_circle_background_color="@color/g_blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/msg_seen_tick"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:src="@drawable/msg_seen_icon"
+                app:layout_constraintBottom_toBottomOf="@id/msg_seen_ciricle_back"
+                app:layout_constraintEnd_toEndOf="@id/msg_seen_ciricle_back"
+                app:layout_constraintStart_toStartOf="@id/msg_seen_ciricle_back"
+                app:layout_constraintTop_toTopOf="@id/msg_seen_ciricle_back"
+                app:tint="@color/g_white" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/message_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/relative_lay"
+        tools:text="2:25 pm" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

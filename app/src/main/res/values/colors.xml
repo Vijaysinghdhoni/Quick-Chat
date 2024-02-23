@@ -10,11 +10,19 @@
 
 
     <color name="g_blue">#1056bf</color>
+    <color name="g_light_blue">#9BBBEB</color>
+    <color name="g_light_chat_item_blue">#D1DDF1</color>
+    <color name="g_light_chat_blue">#E8EFFA</color>
     <color name="g_dark_blue">#235299</color>
     <color name="g_white">#f2f5f6</color>
     <color name="g_black">#0f0f0f</color>
+    <color name="g_grey">#6F6D6D</color>
     <color name="g_grey_blue">#374f75</color>
     <color name="g_light_black">#343333</color>
+    <color name="g_search_light_black">#726E6E</color>
     <color name="g_lightgrey">#F3E6E3E3</color>
+    <color name="off_white">#DDD9D9</color>
+
+    <color name="g_search_grey">#f3f5f6</color>
     <color name="g_main_white">#FFFFFFFF</color>
 </resources>

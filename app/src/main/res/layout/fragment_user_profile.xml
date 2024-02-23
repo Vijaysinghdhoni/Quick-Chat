@@ -28,23 +28,65 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.60" />
 
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:contentDescription="@string/app_logo"
-        android:src="@drawable/chatprofile"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/signup_discription"
         app:layout_constraintEnd_toStartOf="@id/end_guide"
         app:layout_constraintStart_toEndOf="@id/start_guide"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/usr_pofile_pic"
+            android:layout_width="190dp"
+            android:layout_height="190dp"
+            android:src="@color/g_black"
+            app:civ_circle_background_color="@color/off_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="@id/usr_pofile_pic"
+            app:layout_constraintEnd_toEndOf="@id/usr_pofile_pic">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/select_img_back"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:src="@color/g_white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/usr_img_change"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@string/change_profile_picture"
+                android:src="@drawable/profile_camera"
+                app:layout_constraintBottom_toBottomOf="@id/select_img_back"
+                app:layout_constraintEnd_toEndOf="@id/select_img_back"
+                app:layout_constraintStart_toStartOf="@id/select_img_back"
+                app:layout_constraintTop_toTopOf="@id/select_img_back"
+                app:tint="@color/g_blue" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/signup_discription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="6dp"
-        android:fontFamily="@font/poppins_semibold"
+        android:fontFamily="@font/poppins"
         android:maxLines="1"
         android:text="Enter your user name here!"
         android:textAllCaps="false"
