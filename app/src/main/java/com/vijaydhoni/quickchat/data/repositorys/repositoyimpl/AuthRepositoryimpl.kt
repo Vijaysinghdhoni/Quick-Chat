@@ -1,8 +1,7 @@
 package com.vijaydhoni.quickchat.data.repositorys.repositoyimpl
 
 import android.app.Activity
-import com.google.firebase.firestore.DocumentReference
-import com.vijaydhoni.quickchat.data.firebase.BaseAuthenticator
+import com.vijaydhoni.quickchat.data.firebase.authentication.BaseAuthenticator
 import com.vijaydhoni.quickchat.data.models.User
 import com.vijaydhoni.quickchat.data.repositorys.repository.AuthRepository
 import com.vijaydhoni.quickchat.util.Resource
@@ -31,8 +30,20 @@ class AuthRepositoryimpl @Inject constructor(private val baseAuthRepository: Bas
         return baseAuthRepository.getCurrentUserId()
     }
 
-    override  suspend fun setUserDetails(user: User): Resource<String> {
+    override suspend fun setUserDetails(user: User): Resource<String> {
         return baseAuthRepository.setUserDetails(user)
+    }
+
+    override fun logout() {
+        baseAuthRepository.logoutUser()
+    }
+
+    override suspend fun saveUserProfileImg(imageByteArray: ByteArray): Resource<String> {
+        return baseAuthRepository.saveUserProfileImg(imageByteArray)
+    }
+
+    override suspend fun userActiveOrLastSeen(isActive: Boolean): Resource<String> {
+        return baseAuthRepository.userActiveOrLastSeen(isActive)
     }
 
 }

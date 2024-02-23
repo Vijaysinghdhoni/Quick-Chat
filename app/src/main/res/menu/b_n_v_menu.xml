@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/recentChatFragment"
+        android:enabled="true"
+        android:icon="@drawable/chat_ic"
+        android:title="@string/recent_chats" />
+
+
+    <item
+        android:id="@+id/stories_fragment"
+        android:enabled="true"
+        android:icon="@drawable/new_status_ic"
+        android:title="@string/stories" />
+
+    <item
+        android:id="@+id/addPeoplesFragment"
+        android:enabled="true"
+        android:icon="@drawable/persons_ic_1"
+        android:title="@string/add_peoples" />
+
+
+
+    <item
+        android:id="@+id/profile_fragment"
+        android:enabled="true"
+        android:icon="@drawable/person_ic_1"
+        android:title="@string/profile" />
+
+</menu>

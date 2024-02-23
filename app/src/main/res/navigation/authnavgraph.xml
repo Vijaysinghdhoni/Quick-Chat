@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/introFragment"
-        android:name="com.vijaydhoni.quickchat.ui.view.fragments.IntroFragment"
+        android:name="com.vijaydhoni.quickchat.ui.view.fragments.authFragments.IntroFragment"
         android:label="fragment_intro"
         tools:layout="@layout/fragment_intro" >
         <action

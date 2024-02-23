@@ -1,11 +1,15 @@
 package com.vijaydhoni.quickchat.ui.view.fragments.authFragments
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -13,6 +17,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
+import com.github.drjacky.imagepicker.ImagePicker
 import com.google.firebase.Timestamp
 import com.vijaydhoni.quickchat.R
 import com.vijaydhoni.quickchat.data.models.User
@@ -30,6 +36,29 @@ class UserProfileFragment : Fragment() {
     }
     private val viewModel by activityViewModels<AuthenticationViewModel>()
     private var user: User? = null
+    private var currentUserID: String? = null
+
+    private var imageUri: Uri? = null
+    private lateinit var imageLauncher: ActivityResultLauncher<Intent>
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        imageLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                if (it.resultCode == Activity.RESULT_OK) {
+                    val uri = it.data?.data
+                    if (uri != null) {
+                        imageUri = uri
+                        Glide.with(binding.usrPofilePic)
+                            .load(imageUri)
+                            .into(binding.usrPofilePic)
+                    }
+                }
+            }
+    }
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,12 +70,54 @@ class UserProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val args by navArgs<UserProfileFragmentArgs>()
         val phone = args.userPhonenumber
+        viewModel.getCurrentUser()
         viewModel.getCurrentUserDetail()
         observeCurrentUser()
         binding.letMeInBttn.setOnClickListener {
             setUserDetails(phone)
         }
         observeSetUserDetail()
+        observeCurrentUserId()
+        changeImgaeBttnclick()
+    }
+
+
+    private fun changeImgaeBttnclick() {
+        binding.usrImgChange.setOnClickListener {
+
+            ImagePicker.with(requireActivity())
+                .cropSquare()
+                .maxResultSize(512, 512)
+                .createIntentFromDialog {
+                    imageLauncher.launch(it)
+                }
+
+        }
+    }
+
+    private fun observeCurrentUserId() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.currentUserId.collectLatest { response ->
+                    when (response) {
+
+                        is Resource.Success -> {
+                            currentUserID = response.data
+                        }
+
+                        is Resource.Error -> {
+                            Toast.makeText(requireContext(), response.message, Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                        else -> {
+
+                        }
+
+                    }
+                }
+
+            }
+        }
     }
 
 
@@ -55,9 +126,9 @@ class UserProfileFragment : Fragment() {
         if (user != null) {
             user?.userName = userName
         } else {
-            user = User(phoneNumber, userName, Timestamp.now())
+            user = User(phoneNumber, userName, Timestamp.now(), userId = currentUserID)
         }
-        viewModel.setUserDetails(user!!)
+        viewModel.setUserDetails(user!!, imageUri)
     }
 
     private fun observeCurrentUser() {
@@ -70,6 +141,13 @@ class UserProfileFragment : Fragment() {
                             user = it.data
                             if (user != null) {
                                 binding.userName.setText(user!!.userName)
+                                if (user?.imagePath?.isNotEmpty() == true) {
+                                    Glide.with(binding.usrPofilePic)
+                                        .load(user?.imagePath)
+                                        .placeholder(R.drawable.person_profile_place_holder)
+                                        .error(R.color.g_black)
+                                        .into(binding.usrPofilePic)
+                                }
                             } else {
                                 Toast.makeText(
                                     requireContext(),

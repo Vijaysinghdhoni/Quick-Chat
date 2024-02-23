@@ -22,4 +22,10 @@ interface AuthRepository {
 
     suspend fun setUserDetails(user: User): Resource<String>
 
+    fun logout()
+
+    suspend fun saveUserProfileImg(imageByteArray: ByteArray): Resource<String>
+
+    suspend fun userActiveOrLastSeen(isActive: Boolean): Resource<String>
+
 }

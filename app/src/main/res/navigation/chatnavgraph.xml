@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chatnavgraph"
+    app:startDestination="@id/recentChatFragment">
+
+    <fragment
+        android:id="@+id/recentChatFragment"
+        android:name="com.vijaydhoni.quickchat.ui.view.fragments.chatFragments.RecentChatFragment"
+        android:label="fragment_recent_chat"
+        tools:layout="@layout/fragment_recent_chat">
+        <action
+            android:id="@+id/action_recentChatFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_recentChatFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPeoplesFragment"
+        android:name="com.vijaydhoni.quickchat.ui.view.fragments.chatFragments.AddPeoplesFragment"
+        android:label="fragment_add_peoples"
+        tools:layout="@layout/fragment_add_peoples" >
+        <action
+            android:id="@+id/action_addPeoplesFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile_fragment"
+        android:name="com.vijaydhoni.quickchat.ui.view.fragments.chatFragments.UserProfileFragment"
+        android:label="fragment_user_profile2"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.vijaydhoni.quickchat.ui.view.fragments.chatFragments.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.vijaydhoni.quickchat.ui.view.fragments.chatFragments.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat">
+        <argument
+            android:name="user"
+            app:argType="com.vijaydhoni.quickchat.data.models.User" />
+    </fragment>
+    <fragment
+        android:id="@+id/stories_fragment"
+        android:name="com.vijaydhoni.quickchat.ui.view.fragments.chatFragments.StoriesFragment"
+        android:label="fragment_stories_"
+        tools:layout="@layout/fragment_stories_">
+        <action
+            android:id="@+id/action_stories_fragment_to_myStatusFragment"
+            app:destination="@id/myStatusFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myStatusFragment"
+        android:name="com.vijaydhoni.quickchat.ui.view.fragments.chatFragments.MyStatusFragment"
+        android:label="fragment_my_status"
+        tools:layout="@layout/fragment_my_status" >
+        <argument
+            android:name="myStorys"
+            app:argType="com.vijaydhoni.quickchat.data.models.UserStory" />
+    </fragment>
+</navigation>

@@ -10,4 +10,23 @@
     <string name="confirm">Confirm</string>
     <string name="sign_in_confirm">Sign in confirmation</string>
     <string name="let_me_in">let me in!</string>
+    <string name="recent_chats">recent chats</string>
+    <string name="add_peoples">add peoples</string>
+    <string name="profile">user profile</string>
+    <string name="search_icon">search icon</string>
+    <string name="search_user">Search User</string>
+    <string name="send_message">send message</string>
+    <string name="chose_emoji">chose emoji</string>
+    <string name="type_message">Type message</string>
+    <string name="attach_media">attach media</string>
+    <string name="camera">camera</string>
+    <string name="name">Name</string>
+    <string name="change_profile_picture">change profile picture</string>
+    <string name="phone">Phone</string>
+    <string name="update">Update</string>
+    <string name="recents_chats">Recents Chats</string>
+    <string name="stories">view stories</string>
+    <string name="status">Status</string>
+    <string name="stataus_delete_warning">you have to manualy delete the status for some time! we are working on automatic status disappear stay tuned!</string>
+    <string name="option_dots">⋮</string>
 </resources>
