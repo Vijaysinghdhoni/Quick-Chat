@@ -77,7 +77,6 @@ class RecentChatRvAdapter(private val currentUserId: String?, private val contex
                 binding.timeLay.visibility = View.VISIBLE
                 if (chatRoom.lastMssgSenderId != currentUserId && !chatRoom.lastMssgSeen) {
                     binding.lastMsg.setTextColor(ContextCompat.getColor(context, color.g_blue))
-                    binding.lastMsg.text = chatRoom.lastMssg
                     binding.lastMsg.textSize = 16f
                     binding.msgNotSeenBackground.visibility = View.VISIBLE
                 } else {
@@ -87,9 +86,14 @@ class RecentChatRvAdapter(private val currentUserId: String?, private val contex
                             color.g_light_black
                         )
                     )
-                    binding.lastMsg.text = "you : ${chatRoom.lastMssg}"
                     binding.lastMsg.textSize = 12f
                     binding.msgNotSeenBackground.visibility = View.GONE
+                }
+
+                if(chatRoom.lastMssgSenderId==currentUserId){
+                    binding.lastMsg.text = "you : ${chatRoom.lastMssg}"
+                }else{
+                    binding.lastMsg.text = chatRoom.lastMssg
                 }
 
                 binding.usrNameTxt.text = user?.userName
