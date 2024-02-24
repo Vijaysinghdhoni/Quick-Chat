@@ -21,6 +21,8 @@ Quick-Chat is a feature-rich Android demo chat application built using Kotlin, F
 
 
 ## Preview
+![Quick-chat ss3](https://github.com/Vijaysinghdhoni/Quick-Chat/assets/142734066/85ea19a4-b34e-4008-9b63-634fa15c6a53)
+
 ![Quick-Chat ss1](https://github.com/Vijaysinghdhoni/Quick-Chat/assets/142734066/7bec5e45-0ea0-492d-ac91-0fd7d36514bf)
 
 ![Quick-chat ss2](https://github.com/Vijaysinghdhoni/Quick-Chat/assets/142734066/9337deee-e397-4cf8-b60e-3e0959aac64b)
