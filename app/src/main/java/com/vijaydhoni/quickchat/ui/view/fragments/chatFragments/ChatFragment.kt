@@ -71,7 +71,9 @@ class ChatFragment : Fragment() {
         observeSendMssg()
         getUserAllMessages()
         observeUserMessages()
+        upcomingFeature()
     }
+
 
     private fun setUserDetials(otherUser: User) {
         if (otherUser.imagePath.isNotEmpty()) {
@@ -135,7 +137,7 @@ class ChatFragment : Fragment() {
 
         binding.emojiBttn.setOnClickListener {
 
-            binding.emojiPicker.visibility = if (binding.emojiPicker.visibility == View.VISIBLE ) {
+            binding.emojiPicker.visibility = if (binding.emojiPicker.visibility == View.VISIBLE) {
                 View.GONE
             } else {
                 View.VISIBLE
@@ -154,7 +156,6 @@ class ChatFragment : Fragment() {
             }
         }
     }
-
 
 
     private fun backButtonClick() {
@@ -313,6 +314,14 @@ class ChatFragment : Fragment() {
         currentUserId = chatViewModel.getCurrentUserId()
     }
 
+    private fun upcomingFeature() {
+        binding.cameraBttn.setOnClickListener {
+            Toast.makeText(requireContext(), "feature coming soon!!", Toast.LENGTH_SHORT).show()
+        }
+        binding.attachMediaBttn.setOnClickListener {
+            Toast.makeText(requireContext(), "feature coming soon!!", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     override fun onResume() {
         super.onResume()
