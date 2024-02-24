@@ -270,6 +270,7 @@ class BaseChatRepoImpl @Inject constructor(
 
                     transaction.update(userStoryCollection, "lastUpdatedTime", Timestamp.now())
                     transaction.update(userStoryCollection, "stories", updatedStories)
+                    transaction.update(userStoryCollection, "user", currentUser)
                 }
             }.await()
 

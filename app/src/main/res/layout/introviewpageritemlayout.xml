@@ -24,17 +24,19 @@
 
     <TextView
         android:id="@+id/intro_headline_txt"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
         android:fontFamily="@font/poppins_bold"
-        android:maxLines="1"
+        android:maxLines="2"
         android:textAlignment="center"
         android:textColor="@color/g_black"
-        android:textSize="29sp"
+        android:textSize="26sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guide_line_hori"
-        tools:text="Welcome to our chat app!" />
+        tools:text="Welcome to our chat app your very much welcome !" />
 
     <TextView
         android:id="@+id/intro_sub_head"

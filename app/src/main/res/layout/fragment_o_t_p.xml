@@ -127,8 +127,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/confrm_txt"
-        app:layout_constraintEnd_toStartOf="@id/end_guide"
-        app:layout_constraintStart_toEndOf="@id/start_guide"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo_img" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -55,6 +55,7 @@ class RecentChatFragment : Fragment() {
 
     //      story automatic delete after 24 hours
     //      add paging
+    // when both users are online then the users message seen or not functionlsity not working
 
 
     private fun recylerviewUserDatacallBack() {
