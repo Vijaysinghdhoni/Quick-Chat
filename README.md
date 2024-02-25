@@ -2,6 +2,14 @@
 
 Quick-Chat is a feature-rich Android demo chat application built using Kotlin, Firebase, and various modern Android development libraries. The app incorporates Firebase Phone Authentication, Firestore for real-time data storage, Firebase Storage for media content, and employs the MVVM architecture pattern. It also utilizes Jetpack Navigation Components, Hilt for dependency injection, Kotlin Coroutines, Kotlin Flows, RecyclerView with DiffUtil for efficient list updates, the new Splash Screen API and much more.
 
+## Preview
+![Quick-chat ss3](https://github.com/Vijaysinghdhoni/Quick-Chat/assets/142734066/85ea19a4-b34e-4008-9b63-634fa15c6a53)
+
+![Quick-Chat ss1](https://github.com/Vijaysinghdhoni/Quick-Chat/assets/142734066/7bec5e45-0ea0-492d-ac91-0fd7d36514bf)
+
+![Quick-chat ss2](https://github.com/Vijaysinghdhoni/Quick-Chat/assets/142734066/9337deee-e397-4cf8-b60e-3e0959aac64b)
+
+
 # Technologies Used
 - **Kotlin:** Primary programming language for Android app development.
 - **Android Studio:** Integrated Development Environment (IDE) for Android app development.
@@ -18,15 +26,6 @@ Quick-Chat is a feature-rich Android demo chat application built using Kotlin, F
 - **Bottom Navigation:** Enhances user experience with a bottom navigation bar for intuitive app navigation.
 - **Material Design Components:** implimented material design components for beautiful ui and ux.
 - **New Splash Screen Api:** Implements Android new splash screen api for beautiful splash screen
-
-
-## Preview
-![Quick-chat ss3](https://github.com/Vijaysinghdhoni/Quick-Chat/assets/142734066/85ea19a4-b34e-4008-9b63-634fa15c6a53)
-
-![Quick-Chat ss1](https://github.com/Vijaysinghdhoni/Quick-Chat/assets/142734066/7bec5e45-0ea0-492d-ac91-0fd7d36514bf)
-
-![Quick-chat ss2](https://github.com/Vijaysinghdhoni/Quick-Chat/assets/142734066/9337deee-e397-4cf8-b60e-3e0959aac64b)
-
 
 ## Features
 - **Start:** Login with your registred number or create a new account.
