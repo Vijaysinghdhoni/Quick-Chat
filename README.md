@@ -38,3 +38,7 @@ Quick-Chat is a feature-rich Android demo chat application built using Kotlin, F
 - **Splash Screen:** Implements Android new splash screen api for beautiful splash screen
 - **General:**  Auto login, bottom navigation, error messages with snackbar, progress bar and many more.
 
+## Work in Progress
+- **Push Notifications**
+- **Call Feature**
+
