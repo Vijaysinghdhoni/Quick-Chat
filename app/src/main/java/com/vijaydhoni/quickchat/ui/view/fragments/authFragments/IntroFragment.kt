@@ -19,7 +19,7 @@ import com.vijaydhoni.quickchat.R
 import com.vijaydhoni.quickchat.data.models.Intro
 import com.vijaydhoni.quickchat.databinding.FragmentIntroBinding
 import com.vijaydhoni.quickchat.ui.view.adapters.IntroViewPagerAdapter
-import com.vijaydhoni.quickchat.ui.viewmodels.AuthenticationViewModel
+import com.vijaydhoni.quickchat.ui.viewmodel.AuthenticationViewModel
 import com.vijaydhoni.quickchat.util.setStatusBarColour
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -18,7 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.vijaydhoni.quickchat.R
 import com.vijaydhoni.quickchat.databinding.FragmentRecentChatBinding
 import com.vijaydhoni.quickchat.ui.view.adapters.RecentChatRvAdapter
-import com.vijaydhoni.quickchat.ui.viewmodels.ChatViewModel
+import com.vijaydhoni.quickchat.ui.viewmodel.ChatViewModel
 import com.vijaydhoni.quickchat.util.Resource
 import com.vijaydhoni.quickchat.util.VerticalItemdecorationRv
 import com.vijaydhoni.quickchat.util.setStatusBarColour
@@ -89,7 +89,7 @@ class RecentChatFragment : Fragment() {
     private fun observeRecentschats() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                chatViewModel.recentsChats.collect { response ->
+                chatViewModel.recentChats.collect { response ->
                     when (response) {
 
                         is Resource.Loading -> {

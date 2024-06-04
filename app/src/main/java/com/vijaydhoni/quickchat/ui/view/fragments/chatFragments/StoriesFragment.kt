@@ -2,7 +2,6 @@ package com.vijaydhoni.quickchat.ui.view.fragments.chatFragments
 
 import android.app.Activity
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
@@ -12,7 +11,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -26,14 +24,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.github.drjacky.imagepicker.ImagePicker
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.Timestamp
 import com.vijaydhoni.quickchat.R
 import com.vijaydhoni.quickchat.data.models.Story
 import com.vijaydhoni.quickchat.data.models.UserStory
 import com.vijaydhoni.quickchat.databinding.FragmentStoriesBinding
 import com.vijaydhoni.quickchat.ui.view.activity.ChatActivity
 import com.vijaydhoni.quickchat.ui.view.adapters.StoriesAdapter
-import com.vijaydhoni.quickchat.ui.viewmodels.ChatViewModel
+import com.vijaydhoni.quickchat.ui.viewmodel.ChatViewModel
 import com.vijaydhoni.quickchat.util.Resource
 import com.vijaydhoni.quickchat.util.VerticalItemdecorationRv
 import com.vijaydhoni.quickchat.util.getTimeInFormat
@@ -43,7 +40,6 @@ import kotlinx.coroutines.launch
 import omari.hamza.storyview.StoryView
 import omari.hamza.storyview.callback.StoryClickListeners
 import omari.hamza.storyview.model.MyStory
-import java.text.SimpleDateFormat
 import java.util.*
 
 @AndroidEntryPoint

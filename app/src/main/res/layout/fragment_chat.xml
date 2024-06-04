@@ -47,37 +47,112 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="10dp"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/user_profile_pic"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/user_name"
+            <LinearLayout
+                android:id="@+id/usr_name_linear_lay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins"
-                android:textColor="@color/g_white"
-                android:textSize="20sp"
-                tools:text="User name" />
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/active_time"
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/poppins"
+                    android:maxLength="17"
+                    android:maxLines="1"
+                    android:textColor="@color/g_white"
+                    android:textSize="16sp"
+                    tools:text="User name" />
+
+                <TextView
+                    android:id="@+id/active_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:maxLength="18"
+                    android:maxLines="1"
+                    android:textColor="@color/g_white"
+                    android:textSize="12sp"
+                    tools:text="last seen 25m ago" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins"
-                android:textColor="@color/g_white"
-                android:textSize="15sp"
-                tools:text="last seen 25m ago" />
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/usr_name_linear_lay"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/button_video"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginEnd="6dp"
+                    android:padding="2dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="35dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <com.zegocloud.uikit.prebuilt.call.invite.widget.ZegoSendCallInvitationButton
+                            android:id="@+id/video_call_btn"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="#1AA8FF" />
+                    </LinearLayout>
 
 
-        </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/button_audio"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="12dp"
+                    android:padding="2dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="35dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <com.zegocloud.uikit.prebuilt.call.invite.widget.ZegoSendCallInvitationButton
+                            android:id="@+id/audio_call_btn"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="#1AA8FF" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -131,7 +206,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="7dp"
-           app:layout_constraintBottom_toTopOf="@id/emoji_picker"
+            app:layout_constraintBottom_toTopOf="@id/emoji_picker"
             app:layout_constraintEnd_toStartOf="@id/end_guide"
             app:layout_constraintStart_toEndOf="@id/start_guide">
 
@@ -211,8 +286,8 @@
             android:id="@+id/emoji_picker"
             android:layout_width="match_parent"
             android:layout_height="380dp"
-            app:emojiGridColumns="9"
             android:visibility="gone"
+            app:emojiGridColumns="9"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

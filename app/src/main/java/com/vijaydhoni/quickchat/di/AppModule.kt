@@ -15,10 +15,10 @@ import com.vijaydhoni.quickchat.data.firebase.authentication.BaseAuthenticator
 import com.vijaydhoni.quickchat.data.firebase.authentication.FireBaseAuthenticatorImpl
 import com.vijaydhoni.quickchat.data.firebase.chat.BaseChatRepo
 import com.vijaydhoni.quickchat.data.firebase.chat.BaseChatRepoImpl
-import com.vijaydhoni.quickchat.data.repositorys.repository.AuthRepository
-import com.vijaydhoni.quickchat.data.repositorys.repository.ChatRepository
-import com.vijaydhoni.quickchat.data.repositorys.repositoyimpl.AuthRepositoryimpl
-import com.vijaydhoni.quickchat.data.repositorys.repositoyimpl.ChatRepositoryImpl
+import com.vijaydhoni.quickchat.data.repo.AuthRepository
+import com.vijaydhoni.quickchat.data.repo.ChatRepository
+import com.vijaydhoni.quickchat.data.repo.repositoyImpl.AuthRepositoryImpl
+import com.vijaydhoni.quickchat.data.repo.repositoyImpl.ChatRepositoryImpl
 import com.vijaydhoni.quickchat.util.Constants.Companion.FCM_BASE_URL
 import com.vijaydhoni.quickchat.util.Constants.Companion.INTRO_SP
 import dagger.Module
@@ -60,7 +60,7 @@ class AppModule {
     @Singleton
     @Provides
     fun providesAuthRepository(baseAuthenticator: BaseAuthenticator): AuthRepository {
-        return AuthRepositoryimpl(baseAuthenticator)
+        return AuthRepositoryImpl(baseAuthenticator)
     }
 
     //chat
@@ -69,13 +69,13 @@ class AppModule {
     @Singleton
     @Provides
     fun providesBaseChatRepo(
-        firebaseFirestore: FirebaseFirestore,
+        firebaseFireStore: FirebaseFirestore,
         firebaseAuth: FirebaseAuth,
         firebaseMessaging: FirebaseMessaging,
         storageReference: StorageReference
     ): BaseChatRepo {
         return BaseChatRepoImpl(
-            firebaseFirestore,
+            firebaseFireStore,
             firebaseAuth,
             firebaseMessaging,
             storageReference
@@ -99,7 +99,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun providesIntroductionSharedPrefernce(
+    fun providesIntroductionSharedPreference(
         app: Application
     ): SharedPreferences = app.getSharedPreferences(INTRO_SP, MODE_PRIVATE)
 

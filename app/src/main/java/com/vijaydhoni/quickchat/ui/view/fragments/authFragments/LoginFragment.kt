@@ -10,7 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.vijaydhoni.quickchat.R
 import com.vijaydhoni.quickchat.databinding.FragmentLoginBinding
-import com.vijaydhoni.quickchat.ui.viewmodels.AuthenticationViewModel
+import com.vijaydhoni.quickchat.ui.viewmodel.AuthenticationViewModel
 import com.vijaydhoni.quickchat.util.setStatusBarColour
 
 class LoginFragment : Fragment() {

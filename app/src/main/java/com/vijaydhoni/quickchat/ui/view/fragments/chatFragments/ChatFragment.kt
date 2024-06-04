@@ -1,6 +1,5 @@
 package com.vijaydhoni.quickchat.ui.view.fragments.chatFragments
 
-import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -26,16 +25,18 @@ import com.vijaydhoni.quickchat.data.models.Message
 import com.vijaydhoni.quickchat.data.models.User
 import com.vijaydhoni.quickchat.databinding.FragmentChatBinding
 import com.vijaydhoni.quickchat.ui.view.adapters.ChatsAdapter
-import com.vijaydhoni.quickchat.ui.viewmodels.ChatViewModel
+import com.vijaydhoni.quickchat.ui.viewmodel.ChatViewModel
 import com.vijaydhoni.quickchat.util.Resource
 import com.vijaydhoni.quickchat.util.VerticalItemdecorationRv
 import com.vijaydhoni.quickchat.util.getChatRoomId
 import com.vijaydhoni.quickchat.util.setStatusBarColour
+import com.zegocloud.uikit.service.defines.ZegoUIKitUser
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
 
 @AndroidEntryPoint
 class ChatFragment : Fragment() {
@@ -72,6 +73,8 @@ class ChatFragment : Fragment() {
         getUserAllMessages()
         observeUserMessages()
         upcomingFeature()
+        startAudioCall(id)
+        startVideoCall(id)
     }
 
 
@@ -260,7 +263,7 @@ class ChatFragment : Fragment() {
             chatViewModel.setChatRoom(it)
             val messageModule =
                 Message(message = message, senderId = currentUserId, Timestamp.now(), seen = false)
-            chatViewModel.sendUserMessage(message = messageModule, chatIDs!!, otherUser)
+            chatViewModel.sendUserMessage(message = messageModule, chatIDs!!)
             binding.usrMsgEt.setText("")
             Log.d("sendMssg", "messageSent")
         }
@@ -320,6 +323,27 @@ class ChatFragment : Fragment() {
         }
         binding.attachMediaBttn.setOnClickListener {
             Toast.makeText(requireContext(), "feature coming soon!!", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
+    private fun startVideoCall(receiverId: String?) {
+        receiverId?.let {
+            binding.videoCallBtn.apply {
+                setIsVideoCall(true)
+                resourceID = "zego_uikit_call"
+                setInvitees(listOf(ZegoUIKitUser(receiverId)))
+            }
+        }
+    }
+
+    private fun startAudioCall(receiverId: String?) {
+        receiverId?.let {
+            binding.audioCallBtn.apply {
+                setIsVideoCall(false)
+                resourceID = "zego_uikit_call"
+                setInvitees(listOf(ZegoUIKitUser(receiverId)))
+            }
         }
     }
 

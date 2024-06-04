@@ -21,7 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.vijaydhoni.quickchat.R
 import com.vijaydhoni.quickchat.databinding.FragmentSearchBinding
 import com.vijaydhoni.quickchat.ui.view.adapters.SearchRvAdapter
-import com.vijaydhoni.quickchat.ui.viewmodels.ChatViewModel
+import com.vijaydhoni.quickchat.ui.viewmodel.ChatViewModel
 import com.vijaydhoni.quickchat.util.Resource
 import com.vijaydhoni.quickchat.util.VerticalItemdecorationRv
 import com.vijaydhoni.quickchat.util.setStatusBarColour

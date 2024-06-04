@@ -24,7 +24,7 @@ import com.vijaydhoni.quickchat.R
 import com.vijaydhoni.quickchat.data.models.User
 import com.vijaydhoni.quickchat.databinding.FragmentUserProfileBinding
 import com.vijaydhoni.quickchat.ui.view.activity.ChatActivity
-import com.vijaydhoni.quickchat.ui.viewmodels.AuthenticationViewModel
+import com.vijaydhoni.quickchat.ui.viewmodel.AuthenticationViewModel
 import com.vijaydhoni.quickchat.util.Resource
 import com.vijaydhoni.quickchat.util.setStatusBarColour
 import kotlinx.coroutines.flow.collectLatest

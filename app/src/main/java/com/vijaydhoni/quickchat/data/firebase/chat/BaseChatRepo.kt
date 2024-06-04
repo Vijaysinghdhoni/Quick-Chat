@@ -22,7 +22,7 @@ interface BaseChatRepo {
 
     fun getUserByUserId(userIds: List<String?>): Flow<User?>
 
-    fun getUserUnseenMssg(chatRoomIds: String): Flow<Int>
+    fun getUserUnseenMsg(chatRoomIds: String): Flow<Int>
 
     suspend fun userActiveOrLastSeen(isActive: Boolean): Resource<String>
 
@@ -42,15 +42,11 @@ interface BaseChatRepo {
 
     suspend fun deleteCurrentUserStory(story: Story): Resource<String>
 
-    suspend fun deleteStoryImgfrmStorage(story: Story): Resource<Unit>
+    suspend fun deleteStoryImgFrmStorage(story: Story): Resource<Unit>
 
-    suspend fun getAllusers(): Resource<List<User>>
+    suspend fun getAllUsers(): Resource<List<User>>
 
     suspend fun getAllUnseenChatRooms(): Resource<List<ChatRoom>>
-
-//    suspend fun saveUserProfileImg(imageByteArray: ByteArray): Resource<String>
-//
-//    suspend fun saveUserInfo(user: User, shouldRetriveOldImg: Boolean): Resource<User>
-
+    suspend fun getCurrentUser(): Resource<User?>
 
 }

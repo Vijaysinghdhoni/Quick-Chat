@@ -6,7 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.vijaydhoni.quickchat.databinding.ActivityMainBinding
-import com.vijaydhoni.quickchat.ui.viewmodels.AuthenticationViewModel
+import com.vijaydhoni.quickchat.ui.viewmodel.AuthenticationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -30,7 +30,6 @@ class BaseChatRepoImpl @Inject constructor(
     private val storage: StorageReference
 ) : BaseChatRepo {
 
-    //will not collect last emitted value
     override fun getSearchedUser(query: String): Flow<Resource<List<User>>> = callbackFlow {
         try {
             trySend(Resource.Loading())
@@ -82,7 +81,7 @@ class BaseChatRepoImpl @Inject constructor(
             firestore.collection(CHATROOMCOLLECTION).document(chatRoomId).collection(
                 CHATSCOLLECTION
             ).add(message).await()
-            Resource.Success("Message Send Sucessfuly")
+            Resource.Success("Message Send Successfully")
         } catch (ex: Exception) {
             Resource.Error(ex.message ?: "Unknown Error")
         } catch (ex: FirebaseFirestoreException) {
@@ -136,8 +135,8 @@ class BaseChatRepoImpl @Inject constructor(
 
         }
 
-    // impliment this with coroutines
-    override fun getUserUnseenMssg(chatRoomIds: String): Flow<Int> = callbackFlow {
+
+    override fun getUserUnseenMsg(chatRoomIds: String): Flow<Int> = callbackFlow {
 
         firestore.collection(CHATROOMCOLLECTION).document(chatRoomIds).collection(
             CHATSCOLLECTION
@@ -159,8 +158,8 @@ class BaseChatRepoImpl @Inject constructor(
             val snapShot =
                 firestore.collection(CHATROOMCOLLECTION).whereArrayContains("usersIds", userId)
                     .orderBy("lastMssgTimeStamp", Query.Direction.DESCENDING).get().await()
-            val recentsChats = snapShot.toObjects(ChatRoom::class.java)
-            Resource.Success(recentsChats)
+            val recentChats = snapShot.toObjects(ChatRoom::class.java)
+            Resource.Success(recentChats)
         } catch (ex: Exception) {
             Resource.Error(ex.message ?: "Unknown Error")
         } catch (ex: FirebaseFirestoreException) {
@@ -214,7 +213,7 @@ class BaseChatRepoImpl @Inject constructor(
                 firestore.collection(USERCOLLECTION).document(firebaseAuth.uid!!)
                     .update("fcmToken", token)
                     .await()
-                Log.d("FCM", " token updated sucesfully")
+                Log.d("FCM", " token updated successfully")
             } else {
                 Log.d("FCM", " token is empty in repo")
             }
@@ -276,7 +275,7 @@ class BaseChatRepoImpl @Inject constructor(
 
             Resource.Success("Story Added Successfully")
         } catch (ex: FirebaseFirestoreException) {
-            Resource.Error(ex.localizedMessage ?: "Firestore error")
+            Resource.Error(ex.localizedMessage ?: "Unknown error")
         } catch (ex: Exception) {
             Resource.Error(ex.localizedMessage ?: "Unknown error")
         }
@@ -305,7 +304,7 @@ class BaseChatRepoImpl @Inject constructor(
             val userStorys = storyCollection.toObjects(UserStory::class.java)
             Resource.Success(userStorys)
         } catch (ex: FirebaseFirestoreException) {
-            Resource.Error(ex.localizedMessage ?: "Firestore Error")
+            Resource.Error(ex.localizedMessage ?: "Unknown Error")
         } catch (ex: Exception) {
             Resource.Error(ex.localizedMessage ?: "Unknown Error")
         }
@@ -319,9 +318,9 @@ class BaseChatRepoImpl @Inject constructor(
             val currentUserStory = response.toObject(UserStory::class.java)
             Resource.Success(currentUserStory)
         } catch (ex: FirebaseFirestoreException) {
-            Resource.Error(ex.localizedMessage ?: "Firestore Error")
+            Resource.Error(ex.localizedMessage ?: "UnExcepted Error!")
         } catch (ex: Exception) {
-            Resource.Error(ex.localizedMessage ?: "Firestore Error")
+            Resource.Error(ex.localizedMessage ?: "UnExcepted Error")
         }
     }
 
@@ -346,9 +345,9 @@ class BaseChatRepoImpl @Inject constructor(
                 }
             }
         } catch (ex: Exception) {
-            Log.d("story", ex.localizedMessage ?: "unkonwn error")
+            Log.d("story", ex.localizedMessage ?: "unknown error")
         } catch (ex: FirebaseFirestoreException) {
-            Log.d("story", ex.localizedMessage ?: "unkonwn error")
+            Log.d("story", ex.localizedMessage ?: "unknown error")
         }
     }
 
@@ -369,7 +368,7 @@ class BaseChatRepoImpl @Inject constructor(
                 userRef.set(userStory!!).await()
                 Resource.Success("Delete Success")
             } else {
-                Resource.Error("Unexcepted Error Try Again")
+                Resource.Error("Unexpected Error Try Again")
             }
 
 
@@ -380,7 +379,7 @@ class BaseChatRepoImpl @Inject constructor(
         }
     }
 
-    override suspend fun deleteStoryImgfrmStorage(story: Story): Resource<Unit> {
+    override suspend fun deleteStoryImgFrmStorage(story: Story): Resource<Unit> {
         return try {
             val imageDirectory =
                 storage.child("userStatusImages/${firebaseAuth.uid}/${story.storyID}")
@@ -393,7 +392,7 @@ class BaseChatRepoImpl @Inject constructor(
         }
     }
 
-    override suspend fun getAllusers(): Resource<List<User>> {
+    override suspend fun getAllUsers(): Resource<List<User>> {
         return try {
             val usersRef = firestore.collection(USERCOLLECTION).get().await()
             val users = usersRef.toObjects(User::class.java)
@@ -420,40 +419,18 @@ class BaseChatRepoImpl @Inject constructor(
         }
     }
 
-//    override suspend fun saveUserProfileImg(imageByteArray: ByteArray): Resource<String> {
-//        return try {
-//            val imageDirectory =
-//                storage.child("profileImages/${firebaseAuth.uid}/${UUID.randomUUID()}")
-//            val result = imageDirectory.putBytes(imageByteArray).await()
-//            val imageUrl = result.storage.downloadUrl.await().toString()
-//            Resource.Success(imageUrl)
-//        } catch (ex: Exception) {
-//            Resource.Error(ex.message ?: "Unknown Error")
-//        } catch (ex: StorageException) {
-//            Resource.Error(ex.message ?: "Unknown Error")
-//        }
-//    }
-//
-//
-//    override suspend fun saveUserInfo(user: User, shouldRetriveOldImg: Boolean): Resource<User> {
-//        return try {
-//            firestore.runTransaction { transaction ->
-//                val docRef = firestore.collection(USERCOLLECTION).document(firebaseAuth.uid!!)
-//                if (shouldRetriveOldImg) {
-//                    val currentUser = transaction.get(docRef).toObject(User::class.java)
-//                    val newUser = user.copy(imagePath = currentUser?.imagePath ?: "")
-//                    transaction.set(docRef, newUser)
-//                } else {
-//                    transaction.set(docRef, user)
-//                }
-//            }.await()
-//            Resource.Success(user)
-//        } catch (ex: Exception) {
-//            Resource.Error(ex.message ?: "Unknown Error")
-//        } catch (ex: FirebaseFirestoreException) {
-//            Resource.Error(ex.message ?: "Unknown Error")
-//        }
-//    }
-//
+
+    override suspend fun getCurrentUser(): Resource<User?> {
+        return try {
+            val snapshot =
+                firestore.collection("User").document(firebaseAuth.uid!!).get().await()
+            val user = snapshot.toObject(User::class.java)
+            Resource.Success(user)
+        } catch (ex: Exception) {
+            Resource.Error(ex.message ?: "Unknown error")
+        } catch (ex: FirebaseFirestoreException) {
+            Resource.Error(ex.message ?: "Unknown error")
+        }
+    }
 
 }
