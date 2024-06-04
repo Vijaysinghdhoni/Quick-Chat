@@ -33,6 +33,14 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
+        <meta-data
+               android:name="ZEGO_CLOUD_APP_ID"
+               android:value="${ZEGO_CLOUD_APP_ID}"/>
+
+        <meta-data
+            android:name="ZEGO_CLOUD_APP_SIGN"
+            android:value="${ZEGO_CLOUD_APP_SIGN}"/>
+
         <service
             android:name=".ui.service.FcmNotificationsService"
             android:exported="false">

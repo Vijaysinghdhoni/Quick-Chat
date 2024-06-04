@@ -1,7 +1,6 @@
 package com.vijaydhoni.quickchat.ui.view.fragments.chatFragments
 
 import android.app.AlertDialog
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,7 +21,7 @@ import com.vijaydhoni.quickchat.data.models.UserStory
 import com.vijaydhoni.quickchat.databinding.FragmentMyStatusBinding
 import com.vijaydhoni.quickchat.ui.view.activity.ChatActivity
 import com.vijaydhoni.quickchat.ui.view.adapters.MyStatusAdapter
-import com.vijaydhoni.quickchat.ui.viewmodels.ChatViewModel
+import com.vijaydhoni.quickchat.ui.viewmodel.ChatViewModel
 import com.vijaydhoni.quickchat.util.Resource
 import com.vijaydhoni.quickchat.util.VerticalItemdecorationRv
 import com.vijaydhoni.quickchat.util.getTimeInFormat

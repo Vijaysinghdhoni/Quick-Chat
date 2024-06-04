@@ -17,7 +17,7 @@ import com.vijaydhoni.quickchat.R
 import com.vijaydhoni.quickchat.databinding.FragmentAddPeoplesBinding
 import com.vijaydhoni.quickchat.ui.view.activity.ChatActivity
 import com.vijaydhoni.quickchat.ui.view.adapters.UsersRvAdapter
-import com.vijaydhoni.quickchat.ui.viewmodels.ChatViewModel
+import com.vijaydhoni.quickchat.ui.viewmodel.ChatViewModel
 import com.vijaydhoni.quickchat.util.Resource
 import com.vijaydhoni.quickchat.util.VerticalItemdecorationRv
 import dagger.hilt.android.AndroidEntryPoint

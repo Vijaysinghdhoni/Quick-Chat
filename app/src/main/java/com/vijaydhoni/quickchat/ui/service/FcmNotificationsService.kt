@@ -3,7 +3,7 @@ package com.vijaydhoni.quickchat.ui.service
 import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.vijaydhoni.quickchat.data.repositorys.repository.ChatRepository
+import com.vijaydhoni.quickchat.data.repo.ChatRepository
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

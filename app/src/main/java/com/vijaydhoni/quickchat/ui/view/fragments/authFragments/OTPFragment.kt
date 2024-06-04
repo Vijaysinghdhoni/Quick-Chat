@@ -3,6 +3,7 @@ package com.vijaydhoni.quickchat.ui.view.fragments.authFragments
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.vijaydhoni.quickchat.R
 import com.vijaydhoni.quickchat.databinding.FragmentOTPBinding
-import com.vijaydhoni.quickchat.ui.viewmodels.AuthenticationViewModel
+import com.vijaydhoni.quickchat.ui.viewmodel.AuthenticationViewModel
 import com.vijaydhoni.quickchat.util.Resource
 import com.vijaydhoni.quickchat.util.setStatusBarColour
 import dagger.hilt.android.AndroidEntryPoint
@@ -59,6 +60,7 @@ class OTPFragment : Fragment() {
 
     }
 
+
     private fun signInWithOtp(otp: String, userPhoneNumber: String) {
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -85,9 +87,12 @@ class OTPFragment : Fragment() {
                             )
                         }
 
+                        //error while  registering new number !
+
                         is Resource.Error -> {
                             binding.progressBar.visibility = View.GONE
                             binding.confrmOtpBttn.revertAnimation()
+                            resource.message?.let { Log.d("MyTag", it) }
                             Toast.makeText(
                                 requireContext(),
                                 resource.message,

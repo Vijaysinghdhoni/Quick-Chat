@@ -24,7 +24,7 @@ import com.vijaydhoni.quickchat.R
 import com.vijaydhoni.quickchat.data.models.User
 import com.vijaydhoni.quickchat.databinding.FragmentProfileBinding
 import com.vijaydhoni.quickchat.ui.view.activity.AuthenticationActivity
-import com.vijaydhoni.quickchat.ui.viewmodels.AuthenticationViewModel
+import com.vijaydhoni.quickchat.ui.viewmodel.AuthenticationViewModel
 import com.vijaydhoni.quickchat.util.Resource
 import com.vijaydhoni.quickchat.util.setStatusBarColour
 import dagger.hilt.android.AndroidEntryPoint

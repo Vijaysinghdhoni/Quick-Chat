@@ -3,7 +3,11 @@ package com.vijaydhoni.quickchat.data.firebase.authentication
 import android.app.Activity
 import com.google.firebase.FirebaseException
 import com.google.firebase.Timestamp
-import com.google.firebase.auth.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthOptions
+import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.storage.StorageException
@@ -15,19 +19,19 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
-import java.util.*
+import java.util.UUID
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class FireBaseAuthenticatorImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
-    private val firebaseFirestore: FirebaseFirestore,
+    private val firebaseFireStore: FirebaseFirestore,
     private val storage: StorageReference
 ) :
     BaseAuthenticator {
 
     private lateinit var onVerificationCode: String
-    private lateinit var resecendingToken: PhoneAuthProvider.ForceResendingToken
+    private lateinit var resendingToken: PhoneAuthProvider.ForceResendingToken
 
     override fun createUserWithPhone(
         phone: String,
@@ -55,7 +59,7 @@ class FireBaseAuthenticatorImpl @Inject constructor(
                             super.onCodeSent(verificationCode, p1)
                             trySend(Resource.Success("OTP Sent Successfully"))
                             onVerificationCode = verificationCode
-                            resecendingToken = p1
+                            resendingToken = p1
                         }
                     }
 
@@ -70,7 +74,7 @@ class FireBaseAuthenticatorImpl @Inject constructor(
                 if (isResendOtp) {
                     PhoneAuthProvider.verifyPhoneNumber(
                         options.setForceResendingToken(
-                            resecendingToken
+                            resendingToken
                         ).build()
                     )
                 } else {
@@ -123,7 +127,7 @@ class FireBaseAuthenticatorImpl @Inject constructor(
     override suspend fun getCurrentUserDetail(): Resource<User?> {
         return try {
             val snapshot =
-                firebaseFirestore.collection("User").document(firebaseAuth.uid!!).get().await()
+                firebaseFireStore.collection("User").document(firebaseAuth.uid!!).get().await()
             val user = snapshot.toObject(User::class.java)
             Resource.Success(user)
         } catch (ex: Exception) {
@@ -136,7 +140,7 @@ class FireBaseAuthenticatorImpl @Inject constructor(
 
     override suspend fun setUserDetails(user: User): Resource<String> {
         return try {
-            firebaseFirestore.collection(USERCOLLECTION).document(firebaseAuth.uid!!).set(user)
+            firebaseFireStore.collection(USERCOLLECTION).document(firebaseAuth.uid!!).set(user)
                 .await()
             Resource.Success("Details updated")
 
@@ -176,7 +180,7 @@ class FireBaseAuthenticatorImpl @Inject constructor(
         return try {
             val userId = firebaseAuth.currentUser?.uid
             if (userId != null) {
-                val userRef = firebaseFirestore.collection(USERCOLLECTION).document(userId)
+                val userRef = firebaseFireStore.collection(USERCOLLECTION).document(userId)
                 val currentTime = Timestamp.now()
                 userRef.update(
                     "isUserActive", isActive,
