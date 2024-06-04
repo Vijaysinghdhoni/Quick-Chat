@@ -1,6 +1,6 @@
 # Quick-Chat
 
-Quick-Chat is a feature-rich Android demo chat application built using Kotlin, Firebase, and various modern Android development libraries. The app incorporates Firebase Phone Authentication, Firestore for real-time data storage, Firebase Storage for media content, and employs the MVVM architecture pattern. It also utilizes Jetpack Navigation Components, Hilt for dependency injection, Kotlin Coroutines, Kotlin Flows, RecyclerView with DiffUtil for efficient list updates, the new Splash Screen API and much more.
+Quick-Chat is a feature-rich Android demo chat application built using Kotlin, Firebase, and various modern Android development libraries. The app incorporates Firebase Phone Authentication, Firestore for real-time data storage, Firebase Storage for media content, ZegoCloud SDK for audio and video call feature and employs the MVVM architecture pattern. It also utilizes Jetpack Navigation Components, Hilt for dependency injection, Kotlin Coroutines, Kotlin Flows, RecyclerView with DiffUtil for efficient list updates, the new Splash Screen API and much more.
 
 ## Preview
 ![Quick-chat ss3](https://github.com/Vijaysinghdhoni/Quick-Chat/assets/142734066/85ea19a4-b34e-4008-9b63-634fa15c6a53)
@@ -16,6 +16,7 @@ Quick-Chat is a feature-rich Android demo chat application built using Kotlin, F
 - **Firebase Phone Authentication:** Utilizes Firebase Phone Authentication for secure user sign-in.
 - **Firebase Firestore:** Stores and retrieves real-time data using Firestore, enabling seamless chat and user interactions
 - **Firebase Storage:** Manages media content, such as images and videos, with Firebase Storage.
+- **Zego Cloud SDK:** Implements zego cloud sdk for smooth audio and video call.
 - **View Binding:** Instead of inflating views manually, view binding will take care of that.
 - **Glide:** Cache images and load them in imageView.
 - **Jetpack Navigation Components:** Implements a single-activity architecture with various fragments for smooth navigation.
@@ -30,6 +31,7 @@ Quick-Chat is a feature-rich Android demo chat application built using Kotlin, F
 ## Features
 - **Start:** Login with your registred number or create a new account.
 - **Chats:** List of chats, online status, update on change.
+- **Audio and Video Call:** Smooth and effective audio and video calling.
 - **Users:**: List of users.
 - **Profile:** Change image, change status, logout.
 - **Chat:** Send and show messages sorted by timestamp, online status, custom toolbar, update on change.
@@ -40,5 +42,5 @@ Quick-Chat is a feature-rich Android demo chat application built using Kotlin, F
 
 ## Work in Progress
 - **Push Notifications**
-- **Call Feature**
+- **Call Feature** - done
 
